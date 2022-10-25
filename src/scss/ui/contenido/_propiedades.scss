@@ -1,0 +1,81 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.propiedades{
+    margin-top: 5rem;
+    @include m.tablet {
+        margin-top: 10rem;
+    }
+
+    &__heading{
+        @include m.headingspan;
+        // acordate que tiene que llevar la m. antes del mixin
+    }
+
+    &__grid{
+        @include m.grid(1, 2rem);
+
+        @include m.tablet {
+            @include m.grid(3, 2rem);
+        }
+    }
+}
+
+.propiedad {
+    background-color: white;
+
+    &__imagen{
+        aspect-ratio: 10/6;
+        background-size: cover; 
+        position: relative;
+    }
+    
+    &:nth-child(1) &__imagen {
+// De la forma que se ve acá arriba, se seleccionan todos los .propiedad y dentro de cada uno de ellos a cada .propiedad__imagen
+        background-image: url(../img/propiedad_1.jpg);
+        background-size: cover;
+
+        .propiedad__nombre{
+            background-color: rgb(0 0 0 / .5);  
+        }
+
+    }
+
+    @for $nr from 2 through 6 {
+        $bg: '../img/propiedad_' + $nr + '.jpg';
+        &:nth-child(#{$nr}) &__imagen {
+            background-image: linear-gradient(to bottom, transparentize( v.$negro, .99 ) 0%, transparentize( v.$negro, .99 ) 65%, transparentize( v.$negro, .1 ) 100% ), url($bg);
+                 
+        }
+    }
+
+    &__nombre{
+        position: absolute;
+        bottom:1rem;
+        left:1rem;
+        color: v.$blanco;        
+        font-size: 2.24rem;
+    } 
+
+// Esto lo hago a partir del 2 ya que el primer caso se hace fuera del for pq yo lo quise hacer asi
+
+    &__contenido{
+        padding: 2rem;
+    }
+
+    &__texto{
+        margin-bottom: 0;
+    }
+
+    &__precio{
+        font-size: 3rem;
+        margin: 0;
+    }
+
+    &__enlace{
+        @include m.boton ( v.$primario, v.$blanco );
+        display: block;
+        text-transform: uppercase;
+    }
+
+}
