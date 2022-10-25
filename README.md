@@ -10,4 +10,4 @@
 - gulp
 
 ## 🌐 Ver sitio en vivo
-https://juambeltz.github.io/alojamientos/
+https://juambeltz.github.io/inmobiliaria/
