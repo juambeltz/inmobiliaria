@@ -8,7 +8,6 @@
 - scss
 - javascript ES6
 - gulp
-- BEM
 
 ## 🌐 Ver sitio en vivo
 https://juambeltz.github.io/alojamientos/
